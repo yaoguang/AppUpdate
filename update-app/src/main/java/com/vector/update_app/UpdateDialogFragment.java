@@ -104,7 +104,6 @@ public class UpdateDialogFragment extends DialogFragment implements View.OnClick
         mActivity = getActivity();
 
 
-
     }
 
     @Override
@@ -285,7 +284,6 @@ public class UpdateDialogFragment extends DialogFragment implements View.OnClick
     public void onClick(View view) {
         int i = view.getId();
         if (i == R.id.btn_ok) {
-
             //权限判断是否有访问外部存储空间权限
             int flag = ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
             if (flag != PackageManager.PERMISSION_GRANTED) {
@@ -296,12 +294,9 @@ public class UpdateDialogFragment extends DialogFragment implements View.OnClick
                     // 申请授权。
                     requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 }
-
             } else {
                 installApp();
-
             }
-
         } else if (i == R.id.iv_close) {
             // TODO @WVector 这里是否要对UpdateAppBean的强制更新做处理？不会重合，当强制更新时，就不会显示这个按钮，也不会调这个方法。
 //            if (mNumberProgressBar.getVisibility() == View.VISIBLE) {
@@ -356,11 +351,10 @@ public class UpdateDialogFragment extends DialogFragment implements View.OnClick
             } else {
                 //提示，并且关闭
                 Toast.makeText(getActivity(), TIPS, Toast.LENGTH_LONG).show();
-                dismiss();
-
+                if (!mUpdateApp.isConstraint())
+                    dismiss();
             }
         }
-
     }
 
     /**

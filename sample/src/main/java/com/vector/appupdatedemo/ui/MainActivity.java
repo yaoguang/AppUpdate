@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         im.setImageBitmap(AppUpdateUtils.drawableToBitmap(AppUpdateUtils.getAppIcon(this)));
 
-        getPermission();
+//        getPermission();
 
     }
 
@@ -56,6 +56,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateKotlin(View view) {
-        startActivity(new Intent(this, KotlinActivity.class));
     }
 }
